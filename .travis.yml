@@ -14,7 +14,7 @@ before_install:
         ;;
     esac
 
-install:
+script:
   - PowerShell New-Item -Path c:/temp -ItemType "directory"
   - PowerShell -Command 'Set-ExecutionPolicy -ExecutionPolicy RemoteSigned'
   - PowerShell Invoke-Webrequest -Uri https://raw.githubusercontent.com/digitalrebar/provision-plugins/v4/cmds/vmware/embedded/scripts/build_iso.ps1 -Outfile C:/temp/build_iso.ps1
