@@ -1,0 +1,20 @@
+matrix:
+  include:
+    os:
+      - windows
+
+install:
+
+before_install:
+- |-
+    case $TRAVIS_OS_NAME in
+      windows)
+        choco install vmware-powercli-psmodule
+        ;;
+    esac
+
+install:
+  - PowerShell New-Item -Path c:/temp -ItemType "directory"
+  - PowerShell -Command 'Set-ExecutionPolicy -ExecutionPolicy RemoteSigned'
+  - PowerShell Invoke-Webrequest -Uri https://raw.githubusercontent.com/digitalrebar/provision-plugins/v4/cmds/vmware/embedded/scripts/build_iso.ps1 -Outfile C:/temp/build_iso.ps1
+  - PowerShell -File c:/temp/build_iso.ps1 -? 
