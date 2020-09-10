@@ -1,9 +1,10 @@
+language: cpp
+
 matrix:
   include:
     os:
       - windows
 
-install:
 
 before_install:
 - |-
